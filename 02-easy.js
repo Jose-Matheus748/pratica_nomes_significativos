@@ -3,17 +3,26 @@
  * Problema: O código abaixo contém valores numéricos "mágicos" e métodos e outros valores sem significado claro.
  */
 function aplicarDescontoNaPassagem(passagem) {
-  let passagemComDesconto = passagem.preco;
+  const {preco} = passagem;
 
-  if (passagem.tipo === 1) {
-    return passagemComDesconto * 0.92;
-  } else if (passagem.tipo === 2) {
-    return passagemComDesconto * 0.94;
-  } else if (passagem.tipo === 3) {
-    return passagemComDesconto * 0.9;
-  } else {
-    return passagemComDesconto;
-  }
+  const primeiroGrupo = 1;
+  const segundoGrupo = 2;
+  const terceiroGrupo = 3;
+
+  const descontoPassagemPrimeiroGrupo = 0.92;
+  const descontoPassagemSegundoGrupo = 0.94;
+  const descontoPassagemTerceiroGrupo = 0.9;
+
+  if (passagem.tipo === primeiroGrupo) {
+    return preco * descontoPassagemPrimeiroGrupo;
+  } else if (passagem.tipo === segundoGrupo) {
+    return preco * descontoPassagemSegundoGrupo;
+  } else if (passagem.tipo === terceiroGrupo) {
+    return preco * descontoPassagemTerceiroGrupo;
+  } 
+  return preco;
 }
 
-console.log(aplicarDescontoNaPassagem({preco: 10, tipo: 1}));
+const passagem = { preco: 10, tipo: 1 };
+const valor = aplicarDescontoNaPassagem(passagem);
+console.log(valor);
