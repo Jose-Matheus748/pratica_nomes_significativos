@@ -2,26 +2,28 @@
  * Exercício 1: Variáveis com nomes ruins
  * Problema: As variáveis abaixo têm nomes ruins que não comunicam sua intenção.
  */
-function ct(a, d, tipo) {
-  let r = 0;
-  for (let indice = 0; indice < a.length; indice++) {
-    const v = a[indice].p * a[indice].q;
-    if (a[indice].tipo === "alimento") {
-      r += v * (1 + tipo.alim);
+function calcularTotal(produtos, desconto, taxa) {
+  let subtotal = 0;
+  for (let indice = 0; indice < produtos.length; indice++) {
+    const valor = produtos[indice].preco * produtos[indice].quantidade;
+    if (produtos[indice].tipo === "alimento") {
+      subtotal += valor * (1 + taxa.alimentos);
     } else {
-      r += v * (1 + t.geral);
+      subtotal += valor * (1 + taxa.geral);
     }
   }
-  return r - d;
+  return subtotal - desconto;
 }
 
-console.log(
-  ct(
-    [
-      { p: 10, q: 2, tipo: "alimento" },
-      { p: 10, q: 2, tipo: "alimento" },
-    ],
-    10,
-    { alim: 0.1, geral: 0.05 }
-  )
-);
+const produtos = [
+  { preco: 10, quantidade: 2, tipo: "alimento" },
+  { preco: 10, quantidade: 2, tipo: "alimento" },
+];
+
+const desconto = 10;
+
+const taxa = { alimento: 0.1, geral: 0.05 };
+
+const resultado = calcularTotal(produtos, desconto, taxa);
+
+console.log(resultado);
